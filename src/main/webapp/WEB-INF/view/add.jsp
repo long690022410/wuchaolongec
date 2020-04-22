@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<form action="add" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td>比赛日期</td>
+				<td>比赛日期 </td>
 				<td><input tyoe="date" name="time"></td>
 			</tr>
 			<tr>
