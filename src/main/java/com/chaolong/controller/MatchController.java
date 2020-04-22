@@ -28,7 +28,7 @@ public class MatchController {
 	@Autowired
 	private MatchService service;
 	// 模糊+分页 查询
-	@RequestMapping("show")
+	@RequestMapping("show")//克隆更新一下
 	public ModelAndView show(@RequestParam(defaultValue = "1")Integer pageNum,QueryVo vo) {
 		ModelAndView mv = new ModelAndView("show");
 		int size = 3;
