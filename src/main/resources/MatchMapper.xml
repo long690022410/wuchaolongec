@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chaolong.dao.MatchDao">
+	<select id="show" resultType="match">
+		SELECT m.*,t.type tname FROM `match` m
+		INNER JOIN match_type t 
+		ON m.id = t.id
+		<where>
+			<if test="type != null and type != ''">
+				and t.type = #{type}
+			</if>
+			<if test="t1 != null and t1 != ''">
+				and m.`time` >= #{t1} 
+			</if>
+			<if test="t2 != null and t2 != ''">
+				and m.`time` &lt;= #{t2}
+			</if>
+			<if test="j1 != null ">
+				and m.ji >= #{j1}
+			</if>
+			<if test="j2 != null ">
+				and m.ji &lt;= #{j2}
+			</if>
+			<if test="mat != null and mat != ''">
+				and m.mat like concat('%',#{mat},'%')
+			</if>
+			<if test="zhu != null and zhu !=''">
+				and m.zhu like concat('%',#{zhu},'%')
+			</if>
+			<if test="ke != null and ke != ''">
+				and m.ke like concat('%',#{ke},'%')
+			</if>
+		</where>
+		
+	</select>
+	<insert id="add">
+		insert into `match` values (null,#{time},#{mat},#{zhu},#{ke},#{ji},#{pic},#{id})
+	</insert>
+	
+	
+</mapper>
